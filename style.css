@@ -1,0 +1,628 @@
+body {
+  font-family: "Microsoft YaHei", sans-serif;
+  margin: 0;
+  background: #f5f5fa;
+  color: #333;
+}
+
+/* 顶部导航栏 */
+header {
+  background: #2d2f36;
+  color: #fff;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+/* ===== Site header (brand + horizontal nav) ===== */
+.site-header {
+  background: #2d2f36; /* keep existing dark header color */
+  color: #fff;
+  padding: 1.2rem 1rem;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 5rem;
+}
+
+.brand-link {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  color: inherit;
+  text-decoration: none;
+  
+}
+
+.main-nav {
+  margin-left: auto;
+}
+
+.brand-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.brand-logo {
+  height: 40px;
+  display: inline-block;
+  color: #fff;
+}
+
+
+.brand-logo svg {
+  
+  color: #fff;
+}
+
+
+.main-nav .nav-list {
+  display: flex;
+  gap: 0.8rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  align-items: center;
+}
+
+.nav-item a {
+  color: #ffffff;
+  padding: 0.45rem 0.7rem;
+  border-radius: 6px;
+  text-decoration: none;
+  display: inline-block;
+  font-weight: 600;
+  transition: background 0.18s ease, color 0.18s ease;
+}
+
+.nav-item a:hover {
+  background: rgba(255,255,255,0.06);
+}
+
+/* small active-link helper (you can add class="active" to the current page link) */
+.nav-item a.active {
+  background: rgba(91,43,255,0.18);
+  color: #fff;
+}
+
+/* Responsive: stack nav under brand on narrow screens */
+@media (max-width: 768px) {
+  .header-inner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .main-nav .nav-list {
+    width: 100%;
+    flex-wrap: wrap;
+    gap: 0.25rem;
+    margin-top: 0.5rem;
+  }
+
+  .nav-item a {
+    padding: 0.6rem 0.5rem;
+    width: 100%;
+  }
+}
+
+/* ===== End site header styles ===== */
+
+/* 职业按钮区域 */
+.job-selection {
+  text-align: center;
+  padding: 3rem 1rem 2rem;
+  background: #fff;
+}
+
+.job-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+  justify-items: center;
+  margin-top: 1.5rem;
+}
+
+.job-card {
+  background: #ffffff;
+  border-radius: 15px;
+  padding: 1.2rem;
+  text-decoration: none;
+  color: #333;
+  width: 180px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  transition: transform 0.2s, background 0.3s;
+}
+
+.job-card:hover {
+  background: #dfe2f2;
+  transform: translateY(-5px);
+}
+
+.job-card img {
+  width: 80px;
+  height: 80px;
+  margin-bottom: 0.5rem;
+}
+
+/* 精选幻化展示 */
+.featured {
+  padding: 2rem;
+  background: #fafafa;
+  text-align: center;
+}
+
+
+/* New horizontal featured images style */
+.featured-images {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  padding: 0.6rem 0;
+}
+
+.featured-images img {
+  width: 33%;
+  max-width: 500px;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(18,18,24,0.12);
+  transition: transform 0.28s ease, box-shadow 0.28s ease;
+  display: block;
+}
+
+.featured-images img:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 14px 40px rgba(18,18,24,0.18);
+}
+
+@media (max-width: 900px) {
+  .featured-images {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .featured-images img {
+    width: 100%;
+    height: 200px;
+  }
+}
+
+/* 页脚 */
+footer {
+  text-align: center;
+  padding: 1rem;
+  background: #2d2f36;
+  color: #ccc;
+  font-size: 0.9rem;
+}
+/* ====== 职业展示页样式开始 ====== */
+
+/* 页面整体风格（深色主题，与主页区分） */
+.job-page {
+  background-color: #0e0e12;
+  color: #eaeaea;
+  font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  min-height: 100vh;
+  padding-bottom: 2rem;
+}
+
+/* 顶部标题与简介 */
+.job-header {
+  text-align: center;
+  padding: 3rem 1rem 1rem;
+  background: linear-gradient(90deg, #5b2bff, #1a0033);
+  color: #fff;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.4);
+}
+
+.job-header h1 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.job-header p {
+  color: #d5c6ff;
+  font-size: 1rem;
+}
+
+/* 幻化展示区 */
+.job-gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.8rem;
+  padding: 2rem 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* 单个幻化卡片 */
+.job-glamour-card {
+  width: 260px;
+  background-color: #1a1a1f;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 0 10px rgba(91, 43, 255, 0.2);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  text-align: center;
+}
+
+.job-glamour-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 0 18px rgba(145, 82, 255, 0.35);
+}
+
+/* 幻化主图 */
+.job-glamour-card img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+}
+
+/* 幻化信息区 */
+.job-info {
+  padding: 1rem;
+}
+
+.job-info h3 {
+  font-size: 1.2rem;
+  color: #fff;
+  margin-bottom: 0.5rem;
+}
+
+.job-info p {
+  font-size: 0.95rem;
+  color: #ccc;
+  min-height: 40px;
+}
+
+/* 查看详情按钮 */
+.job-view-btn {
+  display: inline-block;
+  margin-top: 0.8rem;
+  padding: 0.5rem 1.2rem;
+  background-color: #5b2bff;
+  border-radius: 6px;
+  color: #fff;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+}
+
+.job-view-btn:hover {
+  background-color: #814dff;
+}
+
+/* 页脚 */
+.job-footer {
+  text-align: center;
+  padding: 1.5rem 0;
+  background-color: #141416;
+  color: #999;
+  margin-top: 3rem;
+  font-size: 0.9rem;
+}
+
+/* 响应式布局（适配手机） */
+@media (max-width: 768px) {
+  .job-header h1 {
+    font-size: 1.6rem;
+  }
+
+  .job-glamour-card {
+    width: 90%;
+  }
+
+  .job-info h3 {
+    font-size: 1.1rem;
+  }
+}
+
+/* ====== 职业展示页样式结束 ====== */
+/* ===== 职业页面幻化卡片样式 ===== */
+body.job-page {
+  background-color: #111;
+  color: #f5f5f5;
+  font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.job-header {
+  background: linear-gradient(90deg, #3b0066, #210033);
+  color: #fff;
+  text-align: center;
+  padding: 1.5rem 1rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+}
+
+.job-header h1 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.job-header p {
+  color: #d5b3ff;
+  font-weight: 500;
+}
+
+/* 幻化卡片容器 */
+.job-gallery {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+  padding: 2rem 0;
+}
+
+/* 幻化卡片整体尺寸 */
+.job-glamour-card {
+  width: 360px;
+  background-color: #1b1b1b;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 0 12px rgba(169, 58, 255, 0.2);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  text-align: center;
+}
+
+.job-glamour-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 0 20px rgba(169, 58, 255, 0.3);
+}
+
+/* 图片占比最大化 */
+.job-glamour-card img {
+  width: 100%;
+  height: 520px;       /* 可根据需要调整高度 */
+  object-fit: cover;
+}
+
+/* 文字部分小一些 */
+.job-info {
+  padding: 0.8rem;
+}
+
+.job-info h3 {
+  font-size: 1.1rem;
+  margin-bottom: 0.3rem;
+  color: #fff;
+}
+
+.job-info p {
+  font-size: 0.85rem;
+  color: #ccc;
+  min-height: 30px;
+}
+
+/* 查看详情按钮 */
+.job-view-btn {
+  display: inline-block;
+  margin-top: 0.5rem;
+  padding: 0.4rem 1rem;
+  background-color: #5c65a3;
+  border-radius: 6px;
+  color: #fff;
+  font-size: 0.85rem;
+  transition: background-color 0.3s ease;
+  text-decoration: none;
+}
+
+.job-view-btn:hover {
+  background-color: #48388d;
+}
+
+/* 页脚 */
+.job-footer {
+  text-align: center;
+  padding: 1.5rem 0;
+  background-color: #1a1a1a;
+  color: #999;
+  margin-top: 3rem;
+  font-size: 0.9rem;
+}
+
+/* ===== 响应式布局 ===== */
+@media (max-width: 768px) {
+  .job-glamour-card {
+    width: 90%;
+  }
+  .job-glamour-card img {
+    height: 220px;
+  }
+}
+
+/* ===== Detail page (left image, right vertical slot details) ===== */
+.detail-page {
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start;
+  padding: 2rem 0;
+}
+
+.detail-image {
+  flex: 0 0 420px; /* reduce fixed column width to make image slightly smaller */
+  max-width: 100%;
+}
+
+.detail-image img {
+  width: 100%;
+  height: auto;
+  max-height: 700px; /* limit displayed height */
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+  display: block;
+}
+
+.detail-info {
+  flex: 1 1 52%;
+  background: #ffffff;
+  padding: 1.2rem 1.4rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.06);
+  color: #222;
+}
+
+.detail-info h1 {
+  margin-top: 0;
+  margin-bottom: 0.6rem;
+  font-size: 1.4rem;
+}
+
+.detail-desc {
+  color: #555;
+  margin-bottom: 1rem;
+}
+
+.slot-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.slot-item {
+  background: #fafafa;
+  padding: 0.65rem 0.9rem;
+  border-radius: 8px;
+  border: 1px solid rgba(0,0,0,0.04);
+  color: #333;
+}
+
+.note {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+/* subtle styling for the more-info paragraph under slot list */
+.more-info {
+  margin-top: 1rem;
+  font-size: 0.95rem;
+  color: #666; /* muted but readable */
+  background: transparent;
+  line-height: 1.5;
+}
+
+/* slot dye on next line and alignment tweaks */
+.detail-image,
+.detail-info {
+  align-self: flex-start; /* ensure top alignment between left image and right info */
+}
+
+.slot-item {
+  background: #fafafa;
+  padding: 0.65rem 0.9rem;
+  border-radius: 8px;
+  border: 1px solid rgba(0,0,0,0.04);
+  color: #333;
+}
+
+.slot-main {
+  font-weight: 600;
+  color: #222;
+}
+
+.slot-dye {
+  margin-top: 0.4rem;
+  color: #777;
+  font-size: 0.93rem;
+  line-height: 1.4;
+}
+
+@media (max-width: 900px) {
+  .detail-page {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .detail-image {
+    max-width: 100%;
+    flex: none;
+  }
+
+  .detail-info {
+    width: 100%;
+  }
+}
+
+/* ===== End detail page styles ===== */
+
+/* ===== About page styles ===== */
+.about-container {
+  padding: 2.5rem 0;
+}
+
+.about-hero {
+  text-align: left;
+  margin-bottom: 1.25rem;
+}
+
+.about-hero h1 {
+  font-size: 1.8rem;
+  margin: 0 0 0.3rem 0;
+}
+
+.about-hero .lead {
+  color: #a59d9d;
+  margin: 0 0 0.6rem 0;
+}
+
+.about-content {
+  background: #fff;
+  padding: 1.25rem 1.4rem;
+  border-radius: 10px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+  color: #222;
+}
+
+.about-content h2 {
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+
+.feature-list {
+  list-style: disc inside;
+  margin: 0.5rem 0 1rem 0;
+  padding-left: 0.6rem;
+}
+
+.feature-item {
+  margin-bottom: 0.45rem;
+  color: #444;
+}
+
+.about-content code {
+  background: #f6f7fb;
+  padding: 0.15rem 0.4rem;
+  border-radius: 4px;
+  font-family: Consolas, "Courier New", monospace;
+  font-size: 0.95em;
+}
+
+@media (max-width: 900px) {
+  .about-hero h1 { font-size: 1.5rem; }
+}
+
+/* ===== End About page styles ===== */
