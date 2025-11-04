@@ -5,6 +5,13 @@ body {
   color: #333;
 }
 
+/* Make all images scale nicely on small screens */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
 /* 顶部导航栏 */
 header {
   background: #2d2f36;
@@ -84,12 +91,31 @@ header a {
 
 .nav-item a {
   color: #ffffff;
-  padding: 0.45rem 0.7rem;
+  padding: 0.75rem 0.9rem; /* larger tappable area for touch */
   border-radius: 6px;
   text-decoration: none;
   display: inline-block;
   font-weight: 600;
   transition: background 0.18s ease, color 0.18s ease;
+}
+
+/* Toggle button for very small screens */
+.nav-toggle {
+  display: none;
+  background: transparent;
+  border: 0;
+  color: #fff;
+  cursor: pointer;
+  padding: 0.45rem;
+  margin-left: 0.25rem;
+}
+.nav-toggle .bar {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: #fff;
+  margin: 4px 0;
+  border-radius: 2px;
 }
 
 .nav-item a:hover {
@@ -120,6 +146,15 @@ header a {
     padding: 0.6rem 0.5rem;
     width: 100%;
   }
+}
+
+/* Very small screens: hide long nav by default and show a toggle button */
+@media (max-width: 520px) {
+  .nav-toggle { display: inline-block; }
+  .main-nav .nav-list { display: none; width: 100%; }
+  .main-nav.open .nav-list { display: flex; flex-direction: column; gap: 0.5rem; }
+  .main-nav.open .nav-list .nav-item a { width: 100%; }
+  .header-inner { gap: 0.6rem; }
 }
 
 /* ===== End site header styles ===== */
@@ -181,7 +216,9 @@ header a {
 .featured-images img {
   width: 33%;
   max-width: 500px;
-  height: 300px;
+  /* let aspect ratio control height for better responsiveness */
+  height: auto;
+  aspect-ratio: 16/9;
   object-fit: cover;
   border-radius: 12px;
   box-shadow: 0 8px 24px rgba(18,18,24,0.12);
@@ -202,7 +239,8 @@ header a {
 
   .featured-images img {
     width: 100%;
-    height: 200px;
+    height: auto;
+    aspect-ratio: auto;
   }
 }
 

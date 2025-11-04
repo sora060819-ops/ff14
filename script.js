@@ -39,6 +39,49 @@ document.addEventListener("DOMContentLoaded", function() {
                 // insert the header at the top of the body (before other content)
                 document.body.insertBefore(header, document.body.firstChild);
 
+                // Add a small-screen navigation toggle button (if not present)
+                try {
+                    const nav = header.querySelector('.main-nav');
+                    const navList = header.querySelector('.nav-list');
+                    if (nav && navList) {
+                        // ensure nav-list has an id for aria-controls if needed
+                        if (!navList.id) navList.id = 'nav-list-' + Date.now();
+
+                        // create toggle button
+                        const toggle = document.createElement('button');
+                        toggle.className = 'nav-toggle';
+                        toggle.setAttribute('aria-expanded', 'false');
+                        toggle.setAttribute('aria-label', 'Toggle navigation');
+                        // point toggle to the nav-list for accessibility
+                        toggle.setAttribute('aria-controls', navList.id);
+                        toggle.innerHTML = '<span class="bar"></span><span class="bar"></span><span class="bar"></span>';
+
+                        // insert toggle next to brand (inside header container)
+                        const container = header.querySelector('.container');
+                        if (container) container.insertBefore(toggle, nav);
+
+                        // toggle behavior
+                        toggle.addEventListener('click', function() {
+                            nav.classList.toggle('open');
+                            const expanded = nav.classList.contains('open');
+                            toggle.setAttribute('aria-expanded', expanded);
+                        });
+
+                        // close nav when a link is clicked (mobile friendly)
+                        nav.querySelectorAll('.nav-list a').forEach(function(a) {
+                            a.addEventListener('click', function() {
+                                if (nav.classList.contains('open')) {
+                                    nav.classList.remove('open');
+                                    toggle.setAttribute('aria-expanded', 'false');
+                                }
+                            });
+                        });
+                    }
+                } catch (e) {
+                    // don't break the page if anything unexpected happens
+                    console.warn('nav toggle setup failed', e);
+                }
+
                 // mark active link based on current filename
                 const currentFile = window.location.pathname.split('/').pop() || 'index.html';
                 header.querySelectorAll('.nav-item a').forEach(function(a) {
